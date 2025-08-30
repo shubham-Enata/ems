@@ -1,0 +1,119 @@
+.vehicle-details {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.vehicle-image-section {
+    height: 100%;
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.vehicle-img_ {
+    
+    max-width: 600px;
+    height: 600px;
+}
+
+.arrow {
+    position: absolute;
+    top: 40%;
+    background: white;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 6px 12px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.arrow.left {
+    left: -30px;
+}
+
+.arrow.right {
+    right: -30px;
+}
+
+.color-picker {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.colors {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.dot.gray {
+    background: #d9d9d9;
+}
+
+.dot.orange {
+    background: orange;
+}
+
+.dot.blue {
+    background: #0474BA;
+}
+
+.dot.active {
+    border-color: #333;
+}
+
+.vehicle-specs {
+    flex: 1;
+    display: grid;
+    gap: 16px;
+    padding: 10px;
+}
+
+.spec-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.spec-card h3 {
+    background: #0474BA;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.spec-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spec-card li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
+    color: #333;
+}

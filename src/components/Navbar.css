@@ -1,0 +1,37 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* Logo */
+.logo img {
+  height: 20px;
+}
+
+/* Make menu + button fill right side */
+.menu-container {
+  display: flex;
+  align-items: center;
+  flex: 1;               /* take remaining space */
+  justify-content: flex-end;
+}
+
+/* Antd Menu full width but auto spacing */
+.menu {
+  flex: 1;
+  display: flex !important;
+  justify-content: flex-end;
+  background: transparent !important;
+  border-bottom: none !important;
+}
+
+/* Button styling */
+.enquire-btn {
+  margin-left: 16px;
+  background-color: #0070c9 !important;
+}
