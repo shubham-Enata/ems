@@ -41,14 +41,14 @@ const Footer = () => {
                     <h4 style={{ color: "#fff" }}>VEHICLES</h4>
                     <p>Sprint Jr</p>
                     <p>Sprint Loader Jr</p>
-                    <p>Cammando Jr</p>
+                    <p>Commando Jr</p>
                 </Col>
 
                 {/* Links */}
                 <Col xs={24} md={6}>
                     <h4 style={{ color: "#fff" }}>Contact Us</h4>
                     <p>About Us</p>
-                    <p>Media Gallery</p>
+                    {/* <p>Media Gallery</p> */}
                 </Col>
 
                 {/* Pune Office */}
@@ -119,12 +119,12 @@ const Footer = () => {
                 <p>© Copyrights 2025 - EMS</p>
 
                 {/* Social Icons */}
-                <div style={{ display: "flex", gap: "15px", fontSize: "18px" }}>
+                {/* <div style={{ display: "flex", gap: "15px", fontSize: "18px" }}>
                     <FacebookOutlined />
                     <LinkedinOutlined />
                     <InstagramOutlined />
                     <YoutubeOutlined />
-                </div>
+                </div> */}
 
                 {/* Links */}
                 <div style={{ display: "flex", gap: "20px" }}>

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import "./VehicleDetails.css";
+import { vehiclesData } from "../redux/vehicleData";
 
 import SprintJr from "../assets/riksha.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedColor } from "../redux/vehicleSlice";
 
 const VehicleDetails = () => {
+
+
+
   const [color, setColor] = useState("blue");
 
   const specs = {
@@ -32,39 +38,75 @@ const VehicleDetails = () => {
     ],
   };
 
+  const dispatch = useDispatch();
+  const { selectedvehicle , selectedColor} = useSelector((store) => store.vehicle)
+
+  console.log(vehiclesData, selectedvehicle, "vehiclesData")
+  const vehicle = vehiclesData[selectedvehicle];
+  console.log(vehicle, "vehicle>>")
+  const image = vehicle && vehicle?.images[selectedColor];
+
   return (
+    // <div className="vehicle-details">
+    //   {/* Left Section */}
+    //   <div className="vehicle-image-section">
+
+    //     <img src={SprintJr} alt="Sprint Jr" className="vehicle-img_" />
+
+
+    //     <div className="color-picker">
+    //       <span>COLOR</span>
+    //       <div className="colors">
+    //         <span
+    //           className={`dot gray ${color === "gray" ? "active" : ""}`}
+    //           onClick={() => setColor("gray")}
+    //         ></span>
+    //         <span
+    //           className={`dot orange ${color === "orange" ? "active" : ""}`}
+    //           onClick={() => setColor("orange")}
+    //         ></span>
+    //         <span
+    //           className={`dot blue ${color === "blue" ? "active" : ""}`}
+    //           onClick={() => setColor("blue")}
+    //         ></span>
+    //       </div>
+    //     </div>
+    //   </div>
+
+    //   {/* Right Section */}
+    //   <div className="vehicle-specs">
+    //     <SpecCard title="STRUCTURE" data={specs.structure} />
+    //     <SpecCard title="DIMENSION & WEIGHT" data={specs.dimension} />
+    //     <SpecCard title="DRIVECHAIN" data={specs.drivechain} />
+    //     <SpecCard title="PERFORMANCE" data={specs.performance} />
+    //   </div>
+    // </div>
+
     <div className="vehicle-details">
       {/* Left Section */}
       <div className="vehicle-image-section">
-     
-        <img src={SprintJr} alt="Sprint Jr" className="vehicle-img_"  />
-      
+        <img src={image} alt={selectedvehicle} className="vehicle-img_" />
 
         <div className="color-picker">
           <span>COLOR</span>
           <div className="colors">
-            <span
-              className={`dot gray ${color === "gray" ? "active" : ""}`}
-              onClick={() => setColor("gray")}
-            ></span>
-            <span
-              className={`dot orange ${color === "orange" ? "active" : ""}`}
-              onClick={() => setColor("orange")}
-            ></span>
-            <span
-              className={`dot blue ${color === "blue" ? "active" : ""}`}
-              onClick={() => setColor("blue")}
-            ></span>
+            {Object.keys(vehicle?.images).map((color) => (
+              <span
+                key={color}
+                className={`dot ${color} ${selectedColor === color ? "active" : ""}`}
+                onClick={() => dispatch(setSelectedColor(color))}
+              ></span>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Right Section */}
       <div className="vehicle-specs">
-        <SpecCard title="STRUCTURE" data={specs.structure} />
-        <SpecCard title="DIMENSION & WEIGHT" data={specs.dimension} />
-        <SpecCard title="DRIVECHAIN" data={specs.drivechain} />
-        <SpecCard title="PERFORMANCE" data={specs.performance} />
+        <SpecCard title="STRUCTURE" data={vehicle.specs.structure} />
+        <SpecCard title="DIMENSION & WEIGHT" data={vehicle.specs.dimension} />
+        <SpecCard title="DRIVECHAIN" data={vehicle.specs.drivechain} />
+        <SpecCard title="PERFORMANCE" data={vehicle.specs.performance} />
       </div>
     </div>
   );

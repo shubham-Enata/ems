@@ -192,9 +192,9 @@ const ContactUs = () => {
                             </Checkbox>
                         </Form.Item>
 
-                        <Form.Item name="subscribeWhatsApp" valuePropName="checked">
+                        {/* <Form.Item name="subscribeWhatsApp" valuePropName="checked">
                             <Checkbox>Subscribe to WhatsApp</Checkbox>
-                        </Form.Item>
+                        </Form.Item> */}
 
                         <Form.Item style={{ textAlign: "center", marginTop: 24 }}>
                             <Button type="primary" htmlType="submit" shape="round" icon={<RightOutlined />}>

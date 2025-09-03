@@ -4,9 +4,14 @@ import "./Vehicles.css";
 import SprintJr from "../assets/sprint.png";
 import SprintLoaderJr from "../assets/sprint_loader.png";
 import CommandoJr from "../assets/commando.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedvehicle } from "../redux/vehicleSlice";
 
 const Vehicles = () => {
+  const dispatch = useDispatch()
   const [selected, setSelected] = useState("Sprint Jr");
+  const { selectedvehicle } = useSelector((store) => store.vehicle)
+
 
   const vehicles = [
     { name: "Sprint Jr", image: SprintJr },
@@ -22,11 +27,11 @@ const Vehicles = () => {
         {vehicles.map((v) => (
           <div
             key={v.name}
-            className={`vehicle-card ${selected === v.name ? "active" : ""}`}
-            onClick={() => setSelected(v.name)}
+            className={`vehicle-card ${selectedvehicle === v.name ? "active" : ""}`}
+            onClick={() => dispatch(setSelectedvehicle(v?.name))}
           >
             <div className="vehicle-img">
-              <img src={v.image} alt={v.name} height={210}/>
+              <img src={v.image} alt={v.name} height={210} />
             </div>
             <p>{v.name}</p>
           </div>
