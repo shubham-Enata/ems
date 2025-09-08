@@ -137,12 +137,13 @@
 
 .arrow {
   position: absolute;
-  top: 45%;
-  font-size: 28px;
+  top: 40%;
+  font-size: 14px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
+  margin: 5px;
 }
 
 .arrow.left {
