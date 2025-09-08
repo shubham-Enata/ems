@@ -133,9 +133,14 @@ const Footer = () => {
 
                 {/* Links */}
                 <div style={{ display: "flex", gap: "20px" }}>
-                    <a href="#" style={{ color: "#fff" }}>Privacy Policy</a>
+                    {/* <a href="#" style={{ color: "#fff" }}>Privacy Policy</a>
                     <a href="#" style={{ color: "#fff" }}>Terms & Conditions</a>
-                    <a href="#" style={{ color: "#fff" }}>FAQs</a>
+                    <a href="#" style={{ color: "#fff" }}>FAQs</a> */}
+                     <p><a href='/about-us' style={{ color: "#fff" }}>About Us</a></p>
+                    <p><a href="/faqs" style={{ color: "#fff" }}> FAQs</a></p>
+                    <p><a href="/privacy-policy" style={{ color: "#fff" }}>Privacy Policy</a></p>
+
+                    <p><a href='/terms-condition' style={{ color: "#fff" }}>Terms Conditions</a></p>
                 </div>
             </Row>
         </footer>
