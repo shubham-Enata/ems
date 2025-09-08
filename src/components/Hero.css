@@ -28,7 +28,7 @@ html {
 .hero-slide {
   position: relative;
   height: 40vh;
-  min-height: 560px;
+  min-height: 590px;
   background: url("../assets/road.png") center/cover no-repeat;
   overflow: hidden;
   display: flex;

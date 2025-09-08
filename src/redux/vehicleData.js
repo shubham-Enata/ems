@@ -1,14 +1,14 @@
-import SprintBlue from "../assets/sprint-loader-jr-blue.png";
-import SprintGray from "../assets/sprint-loader-jr-gray.png";
-import SprintGreen from "../assets/sprint-loader-jr-green.png";
+import Sprint_loader_Blue from "../assets/Images/Sprint-Loader-Jr-blue-2.png";
+import Sprint_loader_Gray from "../assets/Images/Sprint-Loader-Jr-gray.png";
+import Sprint_loader_Green from "../assets/Images/Sprint-Loader-Jr-green.png";
 
-import SprintJrBlue from '../assets/sprint-jr-blue.png'
-import SprintJrGray from '../assets/sprint-jr-gray.png'
-import SprintJorange from '../assets/sprint-jr-orange.png'
+import SprintJrBlue from '../assets/Images/Sprint-Jr-blue.png'
+import SprintJrGray from '../assets/Images/Sprint-Jr-grey.png'
+import SprintJorange from '../assets/Images/Sprint-Jr-orange.png'
 
-import CommandoGreen from '../assets/commando-green.png'
-import CommandoGray from '../assets/commando-gray.png'
-import CommandoSilver from '../assets/commando-silver.png'
+import CommandoGreen from '../assets/Images/commando-Jr-green-2.png'
+import CommandoGray from '../assets/Images/commando-Jr-gray.png'
+import CommandoSilver from '../assets/Images/commando-Jr-silver-matte.png'
 
 
 export const vehiclesData = {
@@ -72,9 +72,9 @@ export const vehiclesData = {
     },
     "Sprint Loader Jr": {
         images: {
-            blue: SprintBlue,
-            gray: SprintGray,
-            green: SprintGreen,
+            blue: Sprint_loader_Blue,
+            gray: Sprint_loader_Gray,
+            green: Sprint_loader_Green,
         },
         specs: {
             structure: [
