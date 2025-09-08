@@ -10,6 +10,7 @@ const TermsAndConditions = lazy(() => import('../pages/policy/termscondition'))
 const AboutUs = lazy(() => import('../pages/policy/aboutus'))
 const PrivacyPolicy = lazy(() => import('../pages/policy/privacyPolicy'))
 const FAQs = lazy(() => import('../pages/policy/faq'))
+const Login = lazy(() => import('../pages/Auth/Login'))
 const AppRoutes = () => {
     return (
         <Suspense fallback={<div>Loading...!</div>}>
@@ -23,6 +24,9 @@ const AppRoutes = () => {
                 <Route path='/about-us' element={<AboutUs />} />
                 <Route path='/privacy-policy' element={<PrivacyPolicy />} />
                 <Route path='/faqs' element={<FAQs />} />
+
+
+                 {/* <Route path="/login" element={<Login />} /> */}
 
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

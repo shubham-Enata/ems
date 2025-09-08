@@ -1,13 +1,13 @@
-import Sprint_loader_Blue from "../assets/Images/Sprint-Loader-Jr-blue-2.png";
-import Sprint_loader_Gray from "../assets/Images/Sprint-Loader-Jr-gray.png";
+import Sprint_loader_Blue from "../assets/Images/Sprint-Loader-Jr-blue.png";
+import Sprint_loader_Gray from "../assets/Images/Sprint-Loader-Jr-grey.png";
 import Sprint_loader_Green from "../assets/Images/Sprint-Loader-Jr-green.png";
 
 import SprintJrBlue from '../assets/Images/Sprint-Jr-blue.png'
 import SprintJrGray from '../assets/Images/Sprint-Jr-grey.png'
 import SprintJorange from '../assets/Images/Sprint-Jr-orange.png'
 
-import CommandoGreen from '../assets/Images/commando-Jr-green-2.png'
-import CommandoGray from '../assets/Images/commando-Jr-gray.png'
+import CommandoGreen from '../assets/Images/commando-Jr-green.png'
+import CommandoGray from '../assets/Images/commando-Jr-grey.png'
 import CommandoSilver from '../assets/Images/commando-Jr-silver-matte.png'
 
 
