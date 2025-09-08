@@ -1,13 +1,22 @@
-import SprintBlue from "../assets/riksha.png";;
-import SprintGray from "../assets/riksha.png";;
-import SprintOrange from "../assets/riksha.png";;
+import SprintBlue from "../assets/sprint-loader-jr-blue.png";
+import SprintGray from "../assets/sprint-loader-jr-gray.png";
+import SprintGreen from "../assets/sprint-loader-jr-green.png";
+
+import SprintJrBlue from '../assets/sprint-jr-blue.png'
+import SprintJrGray from '../assets/sprint-jr-gray.png'
+import SprintJorange from '../assets/sprint-jr-orange.png'
+
+import CommandoGreen from '../assets/commando-green.png'
+import CommandoGray from '../assets/commando-gray.png'
+import CommandoSilver from '../assets/commando-silver.png'
+
 
 export const vehiclesData = {
     "Sprint Jr": {
         images: {
-            blue: SprintBlue,
-            gray: SprintGray,
-            orange: SprintOrange,
+            blue: SprintJrBlue,
+            orange: SprintJorange,
+            gray: SprintJrGray,
         },
         specs: {
             structure: [
@@ -33,20 +42,46 @@ export const vehiclesData = {
                 { label: "Certified Range", value: "120 Kms" },
                 { label: "Drive Mode", value: "Single speed" },
             ],
-        },
+
+            // ✅ Updated 2nd slide sections
+            comfort: [
+                { label: "Windshield glass with wiper Motor", value: "Yes" },
+                { label: "Spare Wheel Provision", value: "Yes" },
+                { label: "Mobile charger", value: "Yes" },
+                { label: "Rear view Camera", value: "Yes" },
+                { label: "Music System", value: "Yes" },
+            ],
+            safety: [
+                { label: "Suspensions- Front", value: "Telescopic with shock absorber with coil spring" },
+                { label: "Suspensions- Rear", value: "Shock absorber with Leaf spring" },
+                { label: "Brakes- Front/Rear", value: "Hydraulic Brake system" },
+                { label: "Tyre size front/Rear", value: "4.50 x 10" },
+            ],
+            battery: [
+                { label: "Battery Type", value: "Lithium" },
+                { label: "Battery Capacity", value: "105 Ah" },
+                { label: "Charger Type", value: "48 V/26 Amp" },
+            ],
+            warranty: [
+                { label: "Vehicle Warranty", value: "One Year" },
+                { label: "Battery Warranty", value: "3 Years" },
+                { label: "Extended Warranty", value: "2 years*" },
+            ],
+        }
+
     },
     "Sprint Loader Jr": {
         images: {
             blue: SprintBlue,
             gray: SprintGray,
-            orange: SprintOrange,
+            green: SprintGreen,
         },
         specs: {
             structure: [
                 { label: "Model", value: "Sprint Loader Jr" },
-                { label: "Seating Capacity", value: "D+4" },
+                { label: "Seating Capacity", value: "Cargo" },
                 { label: "Body Type", value: "Metal" },
-                { label: "Roof Type", value: "Soft Top" },
+                { label: "Roof Type", value: "Hard Top" },
                 { label: "Chassis", value: "Sturdy Boron Steel Chassis" },
             ],
             dimension: [
@@ -54,7 +89,8 @@ export const vehiclesData = {
                 { label: "Wheel Base", value: "1120 mm" },
                 { label: "Ground Clearance", value: "220 mm" },
                 { label: "Kerb weight", value: "390 Kgs" },
-                { label: "GVW", value: "740 Kgs" },
+                { label: "Pay load", value: "450 Kgs" },
+                { label: "GVW", value: "840 Kgs" },
             ],
             drivechain: [
                 { label: "Peak Speed (Watt)", value: "1950 watt" },
@@ -65,28 +101,52 @@ export const vehiclesData = {
                 { label: "Certified Range", value: "120 Kms" },
                 { label: "Drive Mode", value: "Single speed" },
             ],
-        },
+            comfort: [
+                { label: "Windshield glass with wiper Motor", value: "Yes" },
+                { label: "Spare Wheel Provision", value: "Yes" },
+                { label: "Mobile charger", value: "Yes" },
+                { label: "Rear view Camera", value: "Yes" },
+                { label: "Music System", value: "Yes" },
+            ],
+            safety: [
+                { label: "Suspensions- Front", value: "Telescopic with shock absorber with coil spring" },
+                { label: "Suspensions- Rear", value: "Shock absorber with Leaf spring" },
+                { label: "Brakes- Front/Rear", value: "Hydraulic Brake system" },
+                { label: "Tyre size front/Rear", value: "4.50 x 10" },
+            ],
+            battery: [
+                { label: "Battery Type", value: "Lithium" },
+                { label: "Battery Capacity", value: "105 Ah" },
+                { label: "Charger Type", value: "48 V/26 Amp" },
+            ],
+            warranty: [
+                { label: "Vehicle Warranty", value: "One Year" },
+                { label: "Battery Warranty", value: "3 Years" },
+                { label: "Extended Warranty", value: "2 years*" },
+            ],
+        }
+
     },
     "Commando Jr": {
         images: {
-            blue: SprintBlue,
-            gray: SprintGray,
-            orange: SprintOrange,
+            green: CommandoGreen,
+            gray: CommandoGray,
+            silver: CommandoSilver,
         },
         specs: {
             structure: [
                 { label: "Model", value: "Commando Jr" },
-                { label: "Seating Capacity", value: "D+4" },
+                { label: "Seating Capacity", value: "Cargo" },
                 { label: "Body Type", value: "Metal" },
-                { label: "Roof Type", value: "Soft Top" },
                 { label: "Chassis", value: "Sturdy Boron Steel Chassis" },
             ],
             dimension: [
-                { label: "Dimensions- LxWxH", value: "2760 x 995 x 1780" },
+                { label: "Dimensions- LxWxH", value: "2300 x 995 x 1380" },
                 { label: "Wheel Base", value: "1120 mm" },
                 { label: "Ground Clearance", value: "220 mm" },
-                { label: "Kerb weight", value: "390 Kgs" },
-                { label: "GVW", value: "740 Kgs" },
+                { label: "Kerb weight", value: "190 Kgs" },
+                { label: "Pay load", value: "310 Kgs" },
+                { label: "GVW", value: "500 Kgs" },
             ],
             drivechain: [
                 { label: "Peak Speed (Watt)", value: "1950 watt" },
@@ -94,10 +154,31 @@ export const vehiclesData = {
             ],
             performance: [
                 { label: "Top Speed", value: "25 Km/hr" },
-                { label: "Certified Range", value: "120 Kms" },
+                { label: "Certified Range", value: "150 Kms" },
                 { label: "Drive Mode", value: "Single speed" },
             ],
-        },
+            comfort: [
+                { label: "Windshield glass with wiper Motor", value: "Yes" },
+                { label: "Mobile charger", value: "Yes" },
+                { label: "Music System", value: "Yes" },
+            ],
+            safety: [
+                { label: "Suspensions- Front", value: "43 mm telescopic shock absorber" },
+                { label: "Suspensions- Rear", value: "Shock absorber with Leaf spring" },
+                { label: "Brakes- Front/Rear", value: "Mechanical Brake system" },
+                { label: "Tyre size front/Rear", value: "3.75 x 12" },
+            ],
+            battery: [
+                { label: "Battery Type", value: "Lithium" },
+                { label: "Battery Capacity", value: "105 Ah" },
+                { label: "Charger Type", value: "48 V/26 Amp" },
+            ],
+            warranty: [
+                { label: "Vehicle Warranty", value: "One Year" },
+                { label: "Battery Warranty", value: "3 Years" },
+            ],
+        }
+
     },
     // Add more vehicles here if needed
 };

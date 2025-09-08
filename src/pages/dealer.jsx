@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Row,
     Col,
@@ -17,15 +17,63 @@ const { Option } = Select;
 import bg_img from "../assets/contac_bg.png"
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { setloading } from "../redux/vehicleSlice";
+import { create_contact_us, create_dealer, getCountryList, getdistrictList, getStateList } from "../redux/vehicleAction";
+import toast from "react-hot-toast";
+import Loader from "../components/Loader";
 
 const Dealer = () => {
-    const onFinish = (values) => {
+    const dispatch = useDispatch()
+    const { countrylist, statelist, districtList, loading } = useSelector((store) => store.vehicle);
+    console.log(countrylist, statelist, "countrylist")
+
+    const onFinish = async (values) => {
         console.log("Form values:", values);
+
+        try {
+            dispatch(setloading(true))
+            const payload = {
+                email: values.email,
+                // vehicle: values.vehicle,
+                state: values.state,
+                city: values.city,
+               
+                mbno: values.mbno,
+                name: values.name
+            };
+
+            const resp = await dispatch(create_dealer({ payload })).unwrap()
+            toast.success("Dealer Created !")
+
+        } catch (err) {
+
+        } finally {
+            dispatch(setloading(false))
+        }
     };
+
+    useEffect(() => {
+        dispatch(getCountryList())
+
+    }, [])
+    const handlecountry = (countryId) => {
+        console.log("Selected Country ID:", countryId);
+        dispatch(getStateList({ id: countryId }))
+
+    };
+    const handlestate = (stateId) => {
+
+
+        dispatch(getdistrictList({ id: stateId }))
+
+    };
+
+    if (loading) return <Loader />
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
 
             <div>
                 {/* Image with overlay text */}
@@ -56,19 +104,18 @@ const Dealer = () => {
                             level={2}
                             style={{ color: "#fff", margin: 0, fontWeight: "bold", textAlign: "center" }}
                         >
-                           Become a Dealer
+                            Become a Dealer
                         </Title>
                     </div>
                 </div>
 
-              
-               
+
+
 
                 {/* Contact form */}
                 <Card
                     style={{
                         maxWidth: 900, margin: "0 auto 60px", padding: 24,
-                        marginTop:"10px",
 
                         borderRadius: 8, // optional rounded corners
                         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)", // ✅ shadow here
@@ -89,7 +136,7 @@ const Dealer = () => {
                         <Row gutter={16}>
                             <Col xs={24} sm={12}>
                                 <Form.Item
-                                    name="fullName"
+                                    name="name"
                                     rules={[{ required: true, message: "Please enter your full name" }]}
                                 >
                                     <Input placeholder="Enter Full Name *" />
@@ -97,7 +144,7 @@ const Dealer = () => {
                             </Col>
                             <Col xs={24} sm={12}>
                                 <Form.Item
-                                    name="mobileNumber"
+                                    name="mbno"
                                     rules={[
                                         { required: true, message: "Please enter your mobile number" },
                                         { pattern: /^[0-9]{10}$/, message: "Enter valid 10-digit mobile number" },
@@ -119,35 +166,60 @@ const Dealer = () => {
                                     <Input placeholder="Enter Email ID" />
                                 </Form.Item>
                             </Col>
+                             <Col xs={24} sm={12}>
+                                <Form.Item name="country" >
+                                    <Select
+                                        showSearch
+                                        placeholder="Select Country"
+                                        allowClear
+                                        // loading={loading}
+                                        filterOption={(input, option) =>
+                                            option.label.toLowerCase().includes(input.toLowerCase())
+                                        }
+                                        options={countrylist.map((c) => ({ value: c.id, label: c.name }))}
+                                        onChange={handlecountry}
+                                    />
+                                </Form.Item>
+                            </Col>
+                          
+                        </Row>
+                        <Row gutter={16} style={{ marginBottom: 24 }}>
+                           
                             <Col xs={24} sm={12}>
-                                <Form.Item
-                                    name="vehicle"
-                                    rules={[{ required: true, message: "Please select vehicle" }]}
-                                >
-                                    <Select placeholder="Select Vehicle *" allowClear>
-                                        <Option value="car">Car</Option>
-                                        <Option value="suv">SUV</Option>
-                                        <Option value="bike">Bike</Option>
-                                        <Option value="truck">Truck</Option>
-                                    </Select>
+                                <Form.Item name="state" >
+                                    <Select
+                                        showSearch
+                                        placeholder="Select State"
+                                        allowClear
+                                        // loading={loading}
+                                        filterOption={(input, option) =>
+                                            option.label.toLowerCase().includes(input.toLowerCase())
+                                        }
+                                        onChange={(selected, option) => {
+                                            console.log(option, "selected>>")
+                                            handlestate(option?.id)
+                                        }}
+                                        options={statelist.map((c) => ({ value: c.name, label: c.name, id: c.id }))}
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} sm={12}>
+                                <Form.Item name="city" >
+                                    <Select
+                                        showSearch
+                                        placeholder="Select City"
+                                        allowClear
+                                        // loading={loading}
+                                        filterOption={(input, option) =>
+                                            option.label.toLowerCase().includes(input.toLowerCase())
+                                        }
+                                        options={districtList.map((c) => ({ value: c.name, label: c.name, id: c.id }))}
+                                    />
                                 </Form.Item>
                             </Col>
                         </Row>
 
-                        <Row gutter={16} style={{ marginBottom: 24 }}>
-                            <Col xs={24} sm={12}>
-                                <Form.Item name="state">
-                                    <Select placeholder="Select State" allowClear>
-                                        <Option value="maharashtra">Maharashtra</Option>
-                                        <Option value="gujarat">Gujarat</Option>
-                                        <Option value="karnataka">Karnataka</Option>
-                                        <Option value="tamilnadu">Tamil Nadu</Option>
-                                        <Option value="delhi">Delhi</Option>
-                                        {/* Add more options as needed */}
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                        </Row>
+
 
                         <Form.Item
                             name="agreeTerms"
@@ -172,8 +244,8 @@ const Dealer = () => {
                         </Form.Item>
 
                         {/* <Form.Item name="subscribeWhatsApp" valuePropName="checked">
-                            <Checkbox>Subscribe to WhatsApp</Checkbox>
-                        </Form.Item> */}
+                                           <Checkbox>Subscribe to WhatsApp</Checkbox>
+                                       </Form.Item> */}
 
                         <Form.Item style={{ textAlign: "center", marginTop: 24 }}>
                             <Button type="primary" htmlType="submit" shape="round" icon={<RightOutlined />}>
@@ -184,7 +256,7 @@ const Dealer = () => {
                 </Card>
             </div>
 
-            <Footer/>
+            <Footer />
         </>
     );
 };

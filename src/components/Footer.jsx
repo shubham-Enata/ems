@@ -47,7 +47,12 @@ const Footer = () => {
                 {/* Links */}
                 <Col xs={24} md={6}>
                     <h4 style={{ color: "#fff" }}>Contact Us</h4>
-                    <p>About Us</p>
+
+                    <p><a href='/about-us' style={{ color: "#fff" }}>About Us</a></p>
+                    <p><a href="/faqs" style={{ color: "#fff" }}> FAQs</a></p>
+                    <p><a href="/privacy-policy" style={{ color: "#fff" }}>Privacy Policy</a></p>
+
+                    <p><a href='/terms-condition' style={{ color: "#fff" }}>Terms Conditions</a></p>
                     {/* <p>Media Gallery</p> */}
                 </Col>
 

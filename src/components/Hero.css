@@ -1,166 +1,210 @@
-
-html{
+html {
   overflow-x: hidden;
 }
-/* Make the hero break out of any side paddings from parent containers */
+
+/* Full bleed container */
 .full-bleed {
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
 }
 
-/* Slide background and layout */
+/* Hero slide background */
 .hero-slide {
-    position: relative;
-    height: 40vh;
-    min-height: 560px;
-    /* keeps it tall on laptops */
-    background: url("../assets/road.png") center/cover no-repeat;
-    overflow: hidden;
-    padding: 10px 80px;
-    /* matches your screenshot gutters */
-    display: flex;
-    align-items: center;
+  position: relative;
+  height: 40vh;
+  min-height: 560px;
+  background: url("../assets/road.png") center/cover no-repeat;
+  overflow: hidden;
+  padding: 10px 80px;
+  display: flex;
+  align-items: center;
 }
 
-/* The translucent band across the middle */
+/* Dark translucent band across the middle */
 .hero-slide::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 260px;
-    /* band height like screenshot */
-    background: rgba(0, 0, 0, 0.35);
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 260px;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
 }
 
-/* Text block sits over the band */
+/* Main 3-column layout */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  /* Left | Middle | Right */
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  /* above band */
+}
+
+/* Left text */
 .hero-text {
-    top: 30%;
-    position: relative;
-    /* so it sits above ::before */
-    z-index: 2;
-    max-width: 640px;
-    color: #fff;
-    padding: 24px 28px;
-    border-radius: 10px;
-    /* optional: subtle extra dark behind text to match screenshot */
-    /* background: rgba(0,0,0,0.25); */
+  color: #fff;
+  max-width: 640px;
 }
 
 .hero-text h1 {
-    margin: 0 0 14px;
-    font-size: 44px;
-    line-height: 1.15;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+  margin: 0 0 14px;
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
 .hero-text p {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-/* Rickshaw image: absolute bottom-right */
+/* Middle text */
+.hero-middle {
+  text-align: center;
+}
+
+.sprint-text {
+  font-size: 42px;
+  font-weight: 800;
+  color: #fbb03b;
+  /* orange highlight */
+  /* letter-spacing: 1px; */
+}
+
+.hero-middle {
+  text-align: center;
+  /* centers both lines */
+  margin: 20px 0;
+}
+
+
+.loader-text {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;  
+  color: #fbb03b;
+}
+
+
+/* Right side image */
+.hero-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 .hero-riksha {
-    position: absolute;
-    right: 150px;
-    bottom: -20px;
-    /* tucks the wheel off-screen a bit like screenshot */
-    height: 70vh;
-    max-height: 620px;
-    width: auto;
-    object-fit: contain;
-    z-index: 2;
-    pointer-events: none;
-    /* arrows remain clickable */
+  height: 70vh;
+  max-height: 620px;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  /* arrows remain clickable */
+  z-index: 2;
 }
 
 /* Carousel arrows */
 .arrow-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 22px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 3;
- 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .arrow-btn:hover {
-    background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .arrow-btn.left {
-    left: 24px;
+  left: 24px;
 }
 
 .arrow-btn.right {
-    right: 24px;
+  right: 24px;
 }
 
 /* Responsive */
 @media (max-width: 992px) {
-    .hero-text h1 {
-        font-size: 34px;
-    }
+  .hero-text h1 {
+    font-size: 34px;
+  }
 
-    .hero-text p {
-        font-size: 18px;
-    }
+  .hero-text p {
+    font-size: 18px;
+  }
 
-    .hero-riksha {
-        right: 24px;
-        height: 52vh;
-        max-height: 460px;
-    }
+  .sprint-text {
+    font-size: 32px;
+  }
 
-    .hero-slide {
-        padding: 0 24px;
-    }
+  .hero-riksha {
+    height: 52vh;
+    max-height: 460px;
+  }
 
-    .hero-slide::before {
-        height: 220px;
-    }
+  .hero-slide {
+    padding: 0 24px;
+  }
+
+  .hero-slide::before {
+    height: 220px;
+  }
 }
 
 @media (max-width: 640px) {
-    .hero-slide {
-        height: 72vh;
-        min-height: 520px;
-    }
+  .hero-slide {
+    height: 72vh;
+    min-height: 520px;
+  }
 
-    .hero-text {
-        padding: 18px 20px;
-        max-width: 90%;
-    }
+  .hero-content {
+    grid-template-columns: 1fr;
+    /* Stack on small screens */
+    text-align: center;
+    gap: 20px;
+  }
 
-    .hero-text h1 {
-        font-size: 26px;
-    }
+  .hero-text {
+    max-width: 90%;
+    margin: 0 auto;
+  }
 
-    .hero-text p {
-        font-size: 16px;
-    }
+  .hero-text h1 {
+    font-size: 26px;
+  }
 
-    .hero-riksha {
-        height: 42vh;
-        max-height: 360px;
-        right: 12px;
-        bottom: 0;
-    }
+  .hero-text p {
+    font-size: 16px;
+  }
 
-    .hero-slide::before {
-        height: 200px;
-    }
+  .sprint-text {
+    font-size: 24px;
+  }
+
+  .hero-riksha {
+    height: 42vh;
+    max-height: 360px;
+    margin: 0 auto;
+  }
+
+  .hero-slide::before {
+    height: 200px;
+  }
 }

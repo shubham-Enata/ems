@@ -6,6 +6,10 @@ const Contact = lazy(() => import('../pages/contact'))
 const Dealer = lazy(() => import('../pages/dealer'))
 const Enquire = lazy(() => import('../pages/enquire'))
 const DealerLocator = lazy(() => import('../pages/dealerLocator'))
+const TermsAndConditions = lazy(() => import('../pages/policy/termscondition'))
+const AboutUs = lazy(() => import('../pages/policy/aboutus'))
+const PrivacyPolicy = lazy(() => import('../pages/policy/privacyPolicy'))
+const FAQs = lazy(() => import('../pages/policy/faq'))
 const AppRoutes = () => {
     return (
         <Suspense fallback={<div>Loading...!</div>}>
@@ -15,6 +19,10 @@ const AppRoutes = () => {
                 <Route path="/dealer" element={<Dealer />} />
                 <Route path="/enquire" element={<Enquire />} />
                 <Route path="/dealerLocator" element={<DealerLocator />} />
+                <Route path='/terms-condition' element={<TermsAndConditions />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+                <Route path='/faqs' element={<FAQs />} />
 
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

@@ -74,9 +74,15 @@
 .dot.orange {
     background: orange;
 }
+.dot.green {
+    background: rgb(17, 85, 37);
+}
 
 .dot.blue {
     background: #0474BA;
+}
+.dot.silver {
+    background: #C0C0C0;
 }
 
 .dot.active {
@@ -117,4 +123,64 @@
     padding: 4px 0;
     font-size: 14px;
     color: #333;
+}
+
+
+/*  */
+
+
+.vehicle-specs {
+  position: relative;
+  width: 500px;
+  text-align: center;
+}
+
+.arrow {
+  position: absolute;
+  top: 45%;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.arrow.left {
+  left: -30px;
+}
+
+.arrow.right {
+  right: -30px;
+}
+
+.spec-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spec-card {
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+  text-align: left;
+}
+
+.slide-dots {
+  margin-top: 10px;
+}
+
+.slide-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.slide-dots .dot.active {
+  background: #007bff;
 }
