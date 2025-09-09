@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Riksha from "../assets/riksha.png";
+import Sprint_loader_Blue from "../assets/Images/Sprint-Jr-blue.png";
 import Riksha1 from "../assets/riksha1.png";
 import Riksha2 from "../assets/risksha2.png";
 import Riksha3 from "../assets/risksha3.png";
@@ -31,7 +32,7 @@ const Hero = () => {
               <h2 className="sprint-text">SPRINT JR</h2>
             </div>
             <div className="hero-image">
-              <img className="hero-riksha" src={Riksha1} alt="Rickshaw 1" />
+              <img className="hero-riksha" src={Sprint_loader_Blue} alt="Rickshaw 1" />
             </div>
           </div>
         </div>

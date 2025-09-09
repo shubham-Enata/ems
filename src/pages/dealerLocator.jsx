@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Input, Button, List, Typography, Divider } from 'antd';
 import { SearchOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import Navbar from '../components/Navbar';
@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 
 const { Text, Title } = Typography;
 import bg_img from "../assets/contac_bg.png"
+import { get_dealer_master } from '../redux/vehicleAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const dealers = [
@@ -27,6 +29,13 @@ const dealers = [
 ];
 
 const DealerLocator = () => {
+    const dispatch = useDispatch()
+    const { dealer_master_list } = useSelector((store) => store.vehicle);
+
+    console.log(dealer_master_list,"dealer_master_list")
+    useEffect(() => {
+        dispatch(get_dealer_master())
+    }, [])
     return (
         <>
             <Navbar />
@@ -113,7 +122,7 @@ const DealerLocator = () => {
                     >
                         <List
                             itemLayout="vertical"
-                            dataSource={dealers}
+                            dataSource={dealer_master_list}
                             renderItem={(item, idx) => (
                                 <div key={idx}>
                                     <List.Item
@@ -129,11 +138,11 @@ const DealerLocator = () => {
                                         ]}
                                     >
                                         <List.Item.Meta
-                                            title={<Text strong>{item.name}</Text>}
-                                            description={<Text>{item.address}</Text>}
+                                            title={<Text strong>{item.dealer_name}</Text>}
+                                            description={<Text>{item.dealer_geography[0]?.country?.name}</Text>}
                                         />
                                     </List.Item>
-                                    {idx < dealers.length - 1 && <Divider style={{ margin: '12px 0' }} />}
+                                    {idx < dealer_master_list.length - 1 && <Divider style={{ margin: '12px 0' }} />}
                                 </div>
                             )}
                         />

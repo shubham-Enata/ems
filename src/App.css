@@ -1,0 +1,21 @@
+:root {
+    --cyan-color: #00b4d8;
+    --primary-blue-color: #0474BA;
+    --dark-blue: #0d1b2a;
+    --mute-blue: #1b263b;
+}
+
+/* Reset default browser margins */
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+    background-color: var(--cyan-color) !important;
+    border-radius: 8px;
+}

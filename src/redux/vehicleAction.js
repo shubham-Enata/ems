@@ -77,6 +77,28 @@ export const getdistrictList = createAsyncThunk(
     }
 );
 
+export const getpincodeList = createAsyncThunk(
+    "vehicle/getpincodeList",
+    async ({ id }, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get(`/api/v1/locations/pincode/?district=${id}`);
+
+            console.log("returning ", data);
+            return data.results;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
 export const create_contact_us = createAsyncThunk(
     "vehicle/create_contact_us",
     async ({ payload }, { rejectWithValue }) => {
@@ -131,6 +153,190 @@ export const create_enquiry = createAsyncThunk(
 
             console.log("returning ", data);
             return data;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+
+
+// Auth apis >>>>
+
+export const getorgList = createAsyncThunk(
+    "vehicle/getorgList",
+    async (_, { rejectWithValue }) => {
+
+        try {
+            const { data } = await api.get(`/api/v1/organizations/fetch/new1/org/`);
+            console.log("returning ", data);
+            return data.results;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+
+export const create_dealer_master = createAsyncThunk(
+    "vehicle/create_dealer_master",
+    async ({ payload }, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.post(`/api/v1/dms/create/dealer-master/`, payload);
+
+            console.log("returning ", data);
+            return data;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+export const update_dealer_master = createAsyncThunk(
+    "vehicle/update_dealer_master",
+    async ({ payload, id }, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.put(`/api/v1/dms/create/dealer-master/${id}/`, payload);
+
+            console.log("returning ", data);
+            return data;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+
+export const create_dealer_geoghraphy = createAsyncThunk(
+    "vehicle/create_dealer_geoghraphy",
+    async ({ payload }, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.post(`/api/v1/dms/create/dealer-geography/`, payload);
+
+            console.log("returning ", data);
+            return data;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+
+
+
+export const get_dealer_master = createAsyncThunk(
+    "vehicle/get_dealer_master",
+    async (_, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get(`/api/v1/dms/get/dealer-master/`);
+
+            console.log("returning ", data);
+            return data.results;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+
+export const get_contact_us = createAsyncThunk(
+    "vehicle/get_contact_us",
+    async (_, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get(`/api/v1/organizations/create/ems_contact_us/`);
+
+            console.log("returning ", data);
+            return data.results;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+export const get_enquiry = createAsyncThunk(
+    "vehicle/get_enquiry",
+    async (_, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get(`/api/v1/organizations/create/enquire_now/`);
+
+            console.log("returning ", data);
+            return data.results;
+        } catch (error) {
+            // Return custom error message from the API if any
+            if (error.response && error.response.data) {
+
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+export const get_dealer = createAsyncThunk(
+    "vehicle/get_dealer",
+    async (_, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get(`/api/v1/organizations/create/become_a_dealer/`);
+
+            console.log("returning ", data);
+            return data.results;
         } catch (error) {
             // Return custom error message from the API if any
             if (error.response && error.response.data) {

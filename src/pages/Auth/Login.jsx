@@ -14,7 +14,11 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 
 
-
+import toast, { Toaster } from "react-hot-toast";
+import api from "../../redux/vehicleAction";
+import { useDispatch, useSelector } from "react-redux";
+import { setloading } from "../../redux/vehicleSlice";
+import Loader from "../../components/Loader";
 const { Title, Text } = Typography;
 
 // import bg_image from '../../assets/Images/bg_img.png'
@@ -26,7 +30,8 @@ const { Title, Text } = Typography;
 
 
 const Login = () => {
-    //   const navigate = useNavigate();
+    const { loading } = useSelector((store) => store.vehicle);
+    const disptach = useDispatch()
     const [showotp, setShowOtp] = useState(false);
     const [otp, setOtp] = useState("");
     const [formvalues, setFormValues] = useState({
@@ -71,15 +76,54 @@ const Login = () => {
     };
 
 
+
+
+
     const onFinish = async (values) => {
-    
+        try {
 
-    }
+            disptach(setloading(true))
+
+            console.log(values, "values")
+
+
+            // Call your login API
+            const { data } = await api.post(`/api/v1/accounts/login`, {
+                username: values.username,
+                password: values.password,
+            });
+
+            console.log(data, "response>>>")
+
+            if (data.data.auth_token?.access) {
+                // Save token in localStorage
+                localStorage.setItem("ems_token", data.data.auth_token?.access);
+                localStorage.setItem("ems_org", data.data?.org?.id)
+                localStorage.setItem("ems_data", JSON.stringify(data?.data));
+
+
+                // Success toast
+                toast.success("Login successful!");
+                navigate('/admin')
+
+
+            } else {
+                toast.error("Login failed! Invalid credentials.");
+            }
+        } catch (error) {
+
+            console.error("Login error:", error);
+            toast.error("Something went wrong. Please try again!");
+        } finally {
+            disptach(setloading(false))
+        }
+    };
 
 
 
 
-    
+
+
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -89,18 +133,20 @@ const Login = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    if (loading) return <Loader />
+
     return (
-      
+
 
         <Layout
             style={{
                 display: isMobile ? "flex" : "grid",
-               
+
                 // height: "100vh",
             }}
         >
 
-          
+
 
 
             {/* Right Panel */}
@@ -123,49 +169,49 @@ const Login = () => {
                         borderRadius: 15,
                     }}
                 >
-                 
-                        <>
-                            <Title level={2} style={{ textAlign: "center" }}>
-                                Login
-                            </Title>
-                            <Text style={{ display: "block", textAlign: "center", }}>
-                                Enter your credentials to login to the platform
-                            </Text>
 
-                            <Form name="login" onFinish={onFinish} layout="vertical" autoComplete="off">
-                               
-                                <Form.Item
-                                    label="Mobile"
-                                    name="username"
-                                    rules={[
-                                        { required: true, message: 'Please enter your mobile number' },
-                                        {
-                                            pattern: /^[6-9]\d{9}$/,
-                                            message: 'Please enter a valid 10-digit mobile number',
-                                        },
-                                    ]}
+                    <>
+                        <Title level={2} style={{ textAlign: "center" }}>
+                            Login
+                        </Title>
+                        <Text style={{ display: "block", textAlign: "center", }}>
+                            Enter your credentials to login to the platform
+                        </Text>
+
+                        <Form name="login" onFinish={onFinish} layout="vertical" autoComplete="off">
+
+                            <Form.Item
+                                label="Username"
+                                name="username"
+                                rules={[
+                                    { required: true, message: 'Please enter your username' },
+                                    // {
+                                    //     pattern: /^[6-9]\d{9}$/,
+                                    //     message: 'Please enter a valid 10-digit mobile number',
+                                    // },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
+
+
+                            <Form.Item label="Password" name="password" rules={[{ required: true }]}>
+                                <Input.Password />
+                            </Form.Item>
+
+                            <Form.Item>
+                                <Button
+                                    type="primary"
+                                    htmlType="submit"
+                                    block
+                                    style={{ backgroundColor: "#0474BA" }}
                                 >
-                                    <Input maxLength={10} />
-                                </Form.Item>
+                                    LOGIN
+                                </Button>
+                            </Form.Item>
+                        </Form>
 
-
-                                <Form.Item label="Password" name="password" rules={[{ required: true }]}>
-                                    <Input.Password />
-                                </Form.Item>
-
-                                <Form.Item>
-                                    <Button
-                                        type="primary"
-                                        htmlType="submit"
-                                        block
-                                        style={{ backgroundColor: "#0474BA" }}
-                                    >
-                                        LOGIN
-                                    </Button>
-                                </Form.Item>
-                            </Form>
-
-                            {/* <Form.Item style={{ textAlign: "center" }}>
+                        {/* <Form.Item style={{ textAlign: "center" }}>
                                 <NavLink to="/register">Register</NavLink> |{" "}
                                 <NavLink to="/forgotpass">Forgot Password?</NavLink>
                             </Form.Item>
@@ -176,8 +222,8 @@ const Login = () => {
                                     <NavLink to="/privacyPolicy">Privacy Policy</NavLink>.
                                 </Text>
                             </Form.Item> */}
-                        </>
-                   
+                    </>
+
                     <div style={{ textAlign: "center", marginTop: 20 }}>
                         {/* <Text strong>Powered By</Text> */}
                         <br />
